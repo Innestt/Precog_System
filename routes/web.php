@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\CarController; // Import the CarController
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\PredictionController;
 
 // Login routes
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -35,17 +36,17 @@ Route::get('/about', function () {
 
 // Contact route
 Route::get('/contact', function () {
-    return view('contact');
+    return view('contact');  // This will return the contact.blade.php view
 });
 
-// Search route for car model (POST for AJAX request)
-Route::post('/search-car', [CarController::class, 'search'])->name('search.car');
+// Search routes for car model
+Route::middleware('auth')->group(function () {
+    // Route for displaying the search form (GET)
+    Route::get('/search', [CarController::class, 'showSearchPage'])->name('search');
 
-// Search page route (GET for displaying search form)
-Route::get('/search', function () {
-    return view('search');  // This will return the search.blade.php view
+    // Route for posting search form data to get car price prediction (POST)
+    Route::post('/search', [PredictionController::class, 'predict'])->name('predict');
+    
+    // AJAX search route (if needed for car search functionality)
+    Route::post('/search-car', [CarController::class, 'search'])->name('search.car');
 });
-
-
-// Route for displaying the search form
-Route::get('/search', [CarController::class, 'showSearchPage'])->name('search');

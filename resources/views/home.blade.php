@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -97,26 +98,80 @@
                 <img src="{{ asset('images/kayla.jpg') }}" 
                     class="img-fluid rounded-start" 
                     onerror="this.onerror=null; this.src='{{ asset('images/default.jpg') }}';" 
-                    style="border-right: 1px solid #ccc; height: auto; object-fit: cover; border-radius: 15px; width: 100%; margin-right: 55px;">
+                    style="border-right: 1px solid #ccc; height: 100%; object-fit: cover; border-radius: 15px; width: 800%; margin-right: 55px;">
             </div>
             <!-- Details on the Right -->
             <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Featured Car</h5>
-                    <p class="card-text">This car comes with all the amazing features you need. Experience comfort, style, and performance with every drive. Don't miss out!</p>
-                    <a href="#" class="btn btn-primary">Learn More</a>
-                </div>
-            </div>
+            <div class="card-body" 
+    style="padding-bottom: 2px; 
+           display: flex; 
+           flex-direction: column;  
+           align-items: center; 
+           justify-content: center; /* Centers content vertically */
+           text-align: center; 
+           height: 100%; /* Ensure it fills the card */
+           width: 100%;">
+    <h5 class="card-title">Featured Car</h5>
+    <p class="card-text">
+    Elevate your driving experience with this exceptional car! 🚗💨  
+    Designed for comfort, style, and top-tier performance, it’s built to turn heads and deliver an unforgettable ride.  
+    Don’t miss your chance to own excellence drive it today!  
+</p>
+    <a href="#" class="btn btn-primary">Learn More</a>
+</div>
+
+</div>
+
         </div>
     </div>
 </div>
+<footer class="footer">
+    <div class="footer-columns" >
+        <!-- About Us -->
+        <div class="footer-column">
+            <h4>About Us</h4>
+            <p>We provide AI-driven price predictions for second-hand cars to help buyers and sellers make informed decisions.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="{{ url('/') }}">Home</a></li>
+                <li><a href="{{ url('/about') }}">About</a></li>
+                <li><a href="{{ url('/contact') }}">Contact</a></li>
+                <li><a href="{{ url('/faq') }}">FAQ</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-column">
+            <h4>Contact Us</h4>
+            <p>Email: precog@gmail.com</p>
+            <p>Phone: +254 796730474</p>
+            <div>
+            <a href="https://facebook.com/Wawire Gershom" class="facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com/Wawire Gerishom" class="twitter" target="_blank"><i class="fa-brands fa-x"></i></a>
+            <a href="https://instagram.com/wawie Gershom" class="instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-copyright">
+        &copy; {{ date('Y') }} Precog System. All rights reserved.
+    </div>
+</footer>
 
     <style>
-        body {
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-            margin: 0;
-        }
+       body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
 
         .container {
             text-align: center;
@@ -177,6 +232,7 @@
         .card-img-left {
             border-right: 1px solid #ccc;
             height: 100%;
+            width: 100%;
             object-fit: cover;
         }
 
@@ -186,18 +242,33 @@
         .footer {
   background-color: #DEBCF4;
   padding: 40px 20px;
-  text-align: center;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin-bottom: 10px;
+}
+
+body {
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
 }
 
 .footer-columns {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .footer-column {
   flex: 1;
   padding: 0 15px;
+  min-width: 200px; /* Ensure columns have a minimum width */
 }
 
 .footer-column h4 {
@@ -208,6 +279,7 @@
 .footer-column ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-column ul li {
@@ -228,8 +300,19 @@
   margin-top: 20px;
   font-size: 14px;
   color: #333;
+  text-align: center;
 }
 
+/* Ensure the footer extends fully on all screen sizes */
+@media screen and (max-width: 768px) {
+  .footer-columns {
+    flex-direction: column;
+  }
+  
+  .footer-column {
+    margin-bottom: 20px;
+  }
+}
         
         .card:hover{
             transform:scale(1.1);

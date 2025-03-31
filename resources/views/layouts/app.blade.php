@@ -138,11 +138,7 @@
                         <i class="fas fa-search" style="font-size: 24px; margin-right: 10px;"></i> Predict
                     </a>
                 </li>
-                <li>
-                    <a href="{{ url('/cars') }}">
-                        <i class="fas fa-car" style="font-size: 24px; margin-right: 10px;"></i> Cars
-                    </a>
-                </li>
+                
                 <li>
                     <a href="{{ url('/about') }}">
                         <i class="fas fa-info-circle" style="font-size: 24px; margin-right: 10px;"></i> About
